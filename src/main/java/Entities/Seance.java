@@ -6,23 +6,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
+import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Film {
+
+public class Seance {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idfilm;
+private Integer idseance;
 
-    private String titre;
-    @OneToMany(mappedBy = "film")
-    private List<Projectionfilm> projectionfilms;
-
-
+@Temporal(TemporalType.TIMESTAMP)
+    private Date heuredebut;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date heurefin;
+    @ManyToOne
+    private Projectionfilm projectionfilm;
 
 
 

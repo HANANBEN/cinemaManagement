@@ -6,23 +6,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Film {
+
+public class Ticket {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idfilm;
-
-    private String titre;
-    @OneToMany(mappedBy = "film")
-    private List<Projectionfilm> projectionfilms;
-
-
+    private Integer idticket;
+    private Double prix;
+    private Double codepayement;
+    @ManyToOne
+    private Client client;
+    @OneToOne
+    private Place place;
+    @ManyToOne
+    private Projectionfilm projectionfilm;
 
 
 
