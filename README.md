@@ -1,2 +1,2 @@
 # cinemaManagement
-Our cinema  website broject 
+Our cinema  website project 
