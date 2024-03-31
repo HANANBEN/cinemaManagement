@@ -11,27 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Client {
+public class Film {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idclient;
+    private int idfilm;
 
-    private String nom;
-
-
-    private String prenom;
-
-    private String email;
-
-    private String tele;
-
-    @OneToOne
-    private Login login;
-
-    @ManyToOne
-    private Ville ville;
-
-
+    private String titre;
+    private
 
 
 
