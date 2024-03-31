@@ -17,7 +17,7 @@ public class Film {
     private int idfilm;
 
     private String titre;
-    private
+
 
 
 
