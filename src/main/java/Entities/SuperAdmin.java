@@ -24,6 +24,8 @@ public class SuperAdmin {
     private Login emailadmin;
     @OneToMany(mappedBy = "superadmin")
     private List<Gestionnaire> gestionnaires;
+    @OneToMany(mappedBy = "superadmin")
+    private List<Cinema> Cinemas ;
 
 
 

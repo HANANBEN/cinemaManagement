@@ -1,6 +1,7 @@
 package Entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,19 +15,14 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Ville {
+public class Quartier {
     @Id
     private String nom;
     private String longitude;
 
     private String latitude;
+
     private String altitude;
-    @OneToMany(mappedBy = "ville")
-    private List<Cinema> cinemas ;
-    @OneToMany(mappedBy = "ville")
-    private List<Boulvard> Boulbards ;
-    @OneToMany(mappedBy = "ville")
-    private List<Quartier> Quartiers ;
-
-
+    @ManyToOne
+    private Ville ville;
 }
