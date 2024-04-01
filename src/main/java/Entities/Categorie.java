@@ -17,7 +17,7 @@ public class Categorie {
     @Id
      private String nom;
 
-    @OneToMany
+    @OneToMany(mappedBy = "categorie")
     private List<Film> films;
 
 }
