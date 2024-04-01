@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,5 +16,8 @@ import lombok.NoArgsConstructor;
 public class Categorie {
     @Id
      private String nom;
+
+    @OneToMany
+    private List<Film> films;
 
 }
