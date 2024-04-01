@@ -25,5 +25,5 @@ public class Quartier {
     private String altitude;
     @ManyToOne
     private Ville ville;
-    private String altitude1;
+
 }
