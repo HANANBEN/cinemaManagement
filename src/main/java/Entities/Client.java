@@ -34,7 +34,8 @@ public class Client {
     private Ville ville;
     @OneToMany(mappedBy = "client")
     private List<Ticket> tickets;
-
+    @OneToMany(mappedBy = "client")
+    private List<Avis> Avis;
 
 
 
