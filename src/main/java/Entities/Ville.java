@@ -20,12 +20,7 @@ import java.util.List;
 @Entity
 public class Ville {
     @Id
-
-
-    private String name;
-
     private String nom;
-
     private String longitude;
 
     private String latitude;
