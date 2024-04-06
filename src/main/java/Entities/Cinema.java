@@ -17,8 +17,13 @@ public class Cinema {
     private String nom;
     private Integer nbrsalle;
     private Double longitude , latitude,altitude ;
+
+    private Boolean isaffected;
     @ManyToOne
     private Ville ville;
     @ManyToOne
     private SuperAdmin superadmin;
+
+    @OneToOne
+    private Gestionnaire Gestionnaire;
 }
