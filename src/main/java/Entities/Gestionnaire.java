@@ -18,6 +18,7 @@ public class Gestionnaire {
     private String prenom;
     private String email;
     private String tele;
+    private Boolean isaffected;
     @OneToOne
     private Login emailgestionnaire;
     @ManyToOne
