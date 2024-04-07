@@ -1,4 +1,4 @@
-package Entities;
+package Controller;
 
 
 import org.springframework.boot.SpringApplication;
