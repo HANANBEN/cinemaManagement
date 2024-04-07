@@ -26,6 +26,8 @@ public class BoulvardServiceImpl implements BoulvardService {
         return boulvardrep.findById(id).get();
     }
 
+
+
     @Override
     public Boulvard editBoulvard(Boulvard boulvard) {
         return boulvardrep.save(boulvard);
