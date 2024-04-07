@@ -27,7 +27,7 @@ public class BoulvardServiceImpl implements BoulvardService {
     }
 
     @Override
-    public Boulvard editCategorie(Boulvard boulvard) {
+    public Boulvard editBoulvard(Boulvard boulvard) {
         return boulvardrep.save(boulvard);
     }
 
