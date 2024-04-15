@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-<<<<<<<< HEAD:src/main/java/Controller/CinemaManagementApplication.java
+
 package Controller;
 
-========
->>>>>>>> b52e1aeaf12189c98ac3bee3d1dcfafcec03ba3c:CinemaManagementApplication.java
-
-=======
-package Controller;
-
->>>>>>> b52e1aeaf12189c98ac3bee3d1dcfafcec03ba3c
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
