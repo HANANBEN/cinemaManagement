@@ -1,0 +1,9 @@
+.body .bg-image
+{
+	background: url('../background image big.jpeg') no-repeat;
+	background-size: cover; /* Cover the entire container */
+            background-position: center center; /* Center the image */
+            max-height: 400px; /* Adjust the minimum height as needed */
+            height:100%;
+}
+        

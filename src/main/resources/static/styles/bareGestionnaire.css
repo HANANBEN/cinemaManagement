@@ -1,0 +1,63 @@
+  html, body {
+            height: 100%;
+            margin: 0;
+            background-color:#EFEEEE;
+           
+            
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+        }
+        .top-bar {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+        }
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .sidebar {
+            background-color: black;
+            color: white;
+            padding-top: 20px;
+            height: 100%;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .content {
+            padding: 20px;
+        }
+        .logo {
+            position: absolute;
+            top: 0px;
+            left: 35px;
+            width: 60px;
+            height:60px;
+        }
+        .x {
+            position: absolute;
+            top: 21px;
+            left: 100px;
+            width: 60px;
+            height:60px;
+            color: burlywood;
+        }
+        .h1{margin-left:50px;}
+        #h1{margin-left:50px;}
+        #h2{margin-left:39px;}
+        table {
+            margin-left:50px;
+            width: 100%; /* Set table width */
+        }

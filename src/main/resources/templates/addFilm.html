@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AflamCom - Add New Film</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/bareGestionnaire.css}" />
+    <style>
+        /* Custom styles can be added here */
+    </style>
+</head>
+
+<body>
+
+    <!-- Top bar -->
+    <div class="top-bar d-flex justify-content-between align-items-center bg-dark py-3 px-4">
+        <div class="d-flex align-items-center">
+            <img src="/logo.png" class="logo" alt="Logo de votre site web">
+            <h5 class="x text-white"><b>AflamCom</b></h5>
+        </div>
+        <div class="d-flex align-items-center">
+            <a href="/" class="nav-link text-white"><i class="fas fa-home"></i> Accueil</a>
+            <a th:href="@{films}" class="nav-link text-white"><i class="fas fa-user"></i> Gestion des Films </a>
+            <a href="available_books" class="nav-link text-white"><i class="fas fa-film"></i> Gestion des Salles</a>
+            <a href="available_books" class="nav-link text-white"><i class="fas fa-film"></i> Projeter Film</a>
+            <a href="available_books" class="nav-link text-white"><i class="fas fa-film"></i> les Tarifs</a>
+        </div>
+        <a href="#" class="logout-link text-white">Logout <i class="bi bi-box-arrow-right"></i></a>
+    </div>
+
+    <!-- Main content -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4">Add a New Film</h1>
+                        <form th:action="@{/addFilm}" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="titre" class="form-label">Title</label>
+                                <input type="text" id="titre" name="titre" class="form-control" placeholder="Enter the title of the film">
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="hours" class="form-label">Duration (HH:MM)</label>
+                                    <input type="text" id="hours" name="hours" class="form-control" placeholder="Hours">
+                                </div>
+                                <div class="col">
+                                    <label for="minutes" class="form-label">&nbsp;</label>
+                                    <input type="text" id="minutes" name="minutes" class="form-control" placeholder="Minutes">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="realisateur" class="form-label">Director</label>
+                                <input type="text" id="realisateur" name="realisateur" class="form-control" placeholder="Enter the director of the film">
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea id="description" name="description" class="form-control" placeholder="Enter description of the film" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="datesortie" class="form-label">Release Date</label>
+                                <input type="date" id="datesortie" name="datesortie" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="categorie" class="form-label">Category</label>
+                                <select id="categorie" name="categorie" class="form-select">
+                                    <option value="" selected>Select category</option>
+                                    <option th:each="category : ${nomCategories}" th:text="${category}"></option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="customFile" class="form-label">Film Poster</label>
+                                <input type="file" id="customFile" name="file" class="form-control">
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AflamCom - Gestion des Films</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/bareGestionnaire.css">
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
+        .top-bar {
+            
+            color: #fff;
+            padding: 10px 20px;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .nav-link {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+        .logout-link {
+            color: #fff;
+            text-decoration: none;
+            margin-left: auto;
+        }
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+        .btn-add-film {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-add-film:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .table-responsive {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+        .btn-edit, .btn-delete {
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .btn-edit {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-edit:hover, .btn-delete:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+        <img src="/logo.png" class="logo" alt="Logo de votre site web">
+        <h5 class="x"><b>AflamCom</b></h5>
+    </div>
+    <div class="d-flex align-items-center">
+        <a href="/" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+        <a href="/films" class="nav-link"><i class="fas fa-user"></i> Gestion des Films </a>
+        <a href="available_books" class="nav-link"><i class="fas fa-film"></i> Gestion des Salles</a>
+        <a href="available_books" class="nav-link"><i class="fas fa-film"></i> Projeter Film</a>
+        <a href="available_books" class="nav-link"><i class="fas fa-film"></i> les Tarifs</a>
+    </div>
+    <a href="#" class="logout-link">Logout <i class="bi bi-box-arrow-right"></i></a>
+</div>
+
+<main role="main" class="container-fluid mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="col">
+                <a th:href="@{/addFilm}" class="btn btn-add-film btn-sm">Ajouter Film</a>
+            </div>
+            <div class="table-responsive mt-3">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titre</th>
+                            <th>Durée</th>
+                            <th>Réalisateur</th>
+                            <th>Description</th>
+                            <th>Photo</th>
+                            <th>Date de sortie</th>
+                            <th>Catégorie</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="film : ${films}">
+                            <td th:text="${film.idfilm}"></td>
+                            <td th:text="${film.titre}"></td>
+                            <td th:text="${film.duree}"></td>
+                            <td th:text="${film.realisateur}"></td>
+                            <td th:text="${film.description}"></td>
+                            <td>
+                                <img th:if="${film.photo != null}" alt="" th:src="*{'data:image/jpeg;base64,'+{film.photo}}" style="max-width: 100px; max-height: 100px;">
+                            </td>
+                            <td th:text="${film.datesortie}"></td>
+                            <td th:text="${film.categorie.getNom()}"></td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a th:href="@{/film/edit/{id}(id=${film.idfilm})}" class="btn btn-edit btn-sm mx-1">Modifier</a>
+                                    <a th:href="@{/film/delete/{id}(id=${film.idfilm})}" class="btn btn-delete btn-sm mx-1" >Supprimer</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

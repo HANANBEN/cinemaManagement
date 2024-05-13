@@ -1,0 +1,118 @@
+
+     <!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+  
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+      <link rel="stylesheet" href="styles/loginStyle.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="design/design.css">
+    <link rel="stylesheet" href="design/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <meta charset="utf-8">
+ <link rel="stylesheet" 
+    th:href="@{/styles/bareAcceuilStyle.css}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" 
+    th:href="@{/css/bootstrap.min.css}" />
+    <title>AflamCom</title>
+  </head>
+  <body>
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+    
+  
+        <img src="logo.png" alt="AflamCom Logo" class="logo" >
+        
+      
+       <h6 class="x">AflamCom</h6>
+        
+        
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" th:href="@{/home}"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/about}"><b>About</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/contact}"><b>Contact</b></a>
+                </li>
+            </ul>
+            <ul>
+           
+ <div class="nav-item dropdown">
+    <button class="btn btn-secondary dropdown-toggle bg-dark" type="button" id="navbarDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="true">
+        Se Connecter
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuButton">
+        <li><a class="dropdown-item fs-5" th:href="@{/login}">Gestionnaire</a></li>
+        <li><a class="dropdown-item fs-5" th:href="@{/login}">Super Admin</a></li>
+        <li><a class="dropdown-item fs-5" th:href="@{/login}">Client</a></li>
+    </ul>
+</div>
+
+              
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+   
+</style>
+ 
+  <!-- Header-->
+<!-- Header-->
+ 
+
+<header class="py-9 ">
+
+    <div class="loginBox"> <img class="user" src="logo.png" height="100px" width="100px">
+        <h3 class="hh">Sign in here</h3>
+      
+        <form th:action="@{login}" method="post" th:Object="${login}">
+            <div class="inputBox"> 
+             <div id="errorMessage" th:if="${loginFailed}" class="alert alert-danger">Incorrect login</div>
+             
+            <input id="uname" type="text" name="Username" th:field="*{email} "  placeholder="Username"> 
+            <input id="pass" type="password" name="Password" th:field="*{mdp}" placeholder="Password"> 
+            </div>
+           <input type="submit" name="" value="Login">
+        </form > 
+        <a href="#">Forget Password<br> </a>
+        <div class="text-center">
+            <p style="color: #59238F;">Sign-Up</p>
+        </div>
+        
+    </div></div>
+</header>
+<script th:inline="javascript">
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var errorMessage = document.getElementById('errorMessage');
+        if (errorMessage) {
+            setTimeout(function() {
+                errorMessage.style.display = 'none';
+            },5000); 
+        }
+    });
+  
+</script>
+
+   
+   
+
+    
+  </body>
+</html>
