@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+     <link rel="stylesheet" 
+    th:href="@{/styles/bareGestionnaire.css}" />
+    
+		<style>
+		        html, body {
+		            height: 100%;
+		            margin: 0;
+		            background-color:#EFEEEE;
+		            background-size: cover;
+		            background-position: center;
+		        }
+		        .top-bar {
+		            background-color: black;
+		            color: white;
+		            padding: 10px 20px;
+		        }
+		        .top-bar a {
+		            color: white;
+		            text-decoration: none;
+		            margin-left: 20px;
+		        }
+		        .sidebar {
+		            background-color: black;
+		            color: white;
+		            padding-top: 20px;
+		            height: 100%;
+		        }
+		        .nav-link {
+		            color: white;
+		            text-decoration: none;
+		            font-weight: bold;
+		            padding: 10px 15px;
+		            display: block;
+		            transition: background-color 0.3s ease;
+		        }
+		        .nav-link:hover {
+		            background-color: rgba(255, 255, 255, 0.1);
+		        }
+		        .content {
+		            padding: 20px;
+		        }
+		        .logo {
+		            position: absolute;
+		            top: 0px;
+		            left: 35px;
+		            width: 60px;
+		            height:60px;
+		        }
+		        .x {
+		            position: absolute;
+		            top: 21px;
+		            left: 100px;
+		            width: 60px;
+		            height:60px;
+		            color: burlywood;
+		        }
+		    </style>
+      
+    
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+        <img src="/image/logo1.png" class="logo" alt="Logo de votre site web">
+        <h5 class="x"><b>AflamCom</b></h5>
+    </div>
+    <div class="d-flex align-items-center">
+        <a href="/" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+        <a th:href="@{films}" class="nav-link"><i class="fas fa-user"></i> Gestion des Films </a>
+        <a 		th:href="@{/salle}" class="nav-link"><i class="fas fa-film"></i> Gestion des Salles</a>
+         <a href="available_books" class="nav-link"><i class="fas fa-film"></i> Projeter Film</a>
+          <a href="available_books" class="nav-link"><i class="fas fa-film"></i> les Tarifs</a>
+          
+    </div>
+    <a href="#" class="logout-link">Logout <i class="bi bi-box-arrow-right"></i></a>
+</div>
+<div class="container">
+   <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6  container  justify justify-content-center card" >
+               <h1 class="text-center">Creation des salles</h1>
+               <div class="card-body">
+                       <form th:action="@{/salle}" th:object="${salle}" method="post">
+                             <div class="form-group">
+                              <label>Nom:</label>
+                              <input type="text" name="nomsalle" th:field="*{nom}" placeholder="Entrer le nom du salle" class="form-control"/>
+                              
+                              
+                             </div>
+                             
+                             
+                             <div class="box-footer">
+                                 <button type="submit" class="btn btn-primary">Submit</button>
+                             </div>
+                       </form>
+               </div>
+           </div>
+   </div>
+     </div>
+</div>
+
+</body>
+</html>
