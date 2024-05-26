@@ -1,12 +1,11 @@
 package com.example.demo.ServicesImpl;
 
-import com.example.demo.Entities.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Repositories.ProjectionfilmRepository;
-import com.example.demo.Services.ProjectionfilmService;
+import com.example.demo.entities.*;
+import com.example.demo.repository.ProjectionfilmRepository;
+import com.example.demo.services.ProjectionfilmService;
 
 import java.util.List;
 

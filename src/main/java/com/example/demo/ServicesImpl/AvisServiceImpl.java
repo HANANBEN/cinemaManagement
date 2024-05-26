@@ -2,9 +2,9 @@ package com.example.demo.ServicesImpl;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Entities.Avis;
-import com.example.demo.Repositories.AvisRepository;
-import com.example.demo.Services.AvisService;
+import com.example.demo.entities.Avis;
+import com.example.demo.repository.AvisRepository;
+import com.example.demo.services.AvisService;
 
 import java.util.List;
 

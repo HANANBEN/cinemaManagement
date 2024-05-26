@@ -1,11 +1,10 @@
 package com.example.demo.ServicesImpl;
 
-import com.example.demo.Entities.*;
-
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Repositories.ClientRepository;
-import com.example.demo.Services.ClientService;
+import com.example.demo.entities.*;
+import com.example.demo.repository.ClientRepository;
+import com.example.demo.services.ClientService;
 import com.example.demo.userDTO.UserDTO;
 
 import java.util.List;

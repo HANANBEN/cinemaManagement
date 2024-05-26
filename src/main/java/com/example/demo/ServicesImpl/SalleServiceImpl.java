@@ -1,18 +1,27 @@
 package com.example.demo.ServicesImpl;
 
-import com.example.demo.Entities.*;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Repositories.SalleRepository;
-import com.example.demo.Services.SalleService;
+import com.example.demo.entities.*;
+import com.example.demo.repository.SalleRepository;
+import com.example.demo.services.SalleService;
 
 import java.util.List;
 
 @Service
 public class SalleServiceImpl implements SalleService {
     private SalleRepository sallerep;
-    @Override
+    
+    
+    
+    @Autowired  
+    public SalleServiceImpl(SalleRepository sallerep) {
+		super();
+		this.sallerep = sallerep;
+	}
+
+	@Override
     public List<Salle> getAllSalles() {
         return sallerep.findAll();
     }
@@ -20,6 +29,10 @@ public class SalleServiceImpl implements SalleService {
     @Override
     public Salle saveSalle(Salle salle) {
         return sallerep.save(salle);
+    }
+    @Override
+    public Salle findSallebyNom(String nom) {
+        return sallerep.findByNom(nom);
     }
 
     @Override

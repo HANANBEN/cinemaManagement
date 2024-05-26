@@ -1,11 +1,10 @@
 package com.example.demo.ServicesImpl;
 
-import com.example.demo.Entities.*;
-
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Repositories.PlaceRepository;
-import com.example.demo.Services.PlaceService;
+import com.example.demo.entities.*;
+import com.example.demo.repository.PlaceRepository;
+import com.example.demo.services.PlaceService;
 
 import java.util.List;
 @Service

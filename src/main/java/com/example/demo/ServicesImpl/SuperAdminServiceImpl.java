@@ -1,11 +1,10 @@
 package com.example.demo.ServicesImpl;
 
-import com.example.demo.Entities.*;
-
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Repositories.SuperAdminRepository;
-import com.example.demo.Services.SuperAdminService;
+import com.example.demo.entities.*;
+import com.example.demo.repository.SuperAdminRepository;
+import com.example.demo.services.SuperAdminService;
 
 import java.util.List;
 @Service

@@ -2,9 +2,9 @@ package com.example.demo.ServicesImpl;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Entities.Boulvard;
-import com.example.demo.Repositories.BoulvardRepository;
-import com.example.demo.Services.BoulvardService;
+import com.example.demo.entities.Boulvard;
+import com.example.demo.repository.BoulvardRepository;
+import com.example.demo.services.BoulvardService;
 
 import java.util.List;
 

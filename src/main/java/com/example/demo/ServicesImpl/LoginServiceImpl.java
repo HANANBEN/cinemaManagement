@@ -1,12 +1,11 @@
 package com.example.demo.ServicesImpl;
 
-import com.example.demo.Entities.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Repositories.LoginRepository;
-import com.example.demo.Services.LoginService;
+import com.example.demo.entities.*;
+import com.example.demo.repository.LoginRepository;
+import com.example.demo.services.LoginService;
 import com.example.demo.userDTO.UserDTO;
 
 import java.util.List;

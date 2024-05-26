@@ -1,11 +1,10 @@
 package com.example.demo.ServicesImpl;
 
-import com.example.demo.Entities.*;
-
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Repositories.TicketRepository;
-import com.example.demo.Services.TicketService;
+import com.example.demo.entities.*;
+import com.example.demo.repository.TicketRepository;
+import com.example.demo.services.TicketService;
 
 import java.util.List;
 @Service

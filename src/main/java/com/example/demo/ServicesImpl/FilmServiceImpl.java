@@ -1,6 +1,4 @@
 package com.example.demo.ServicesImpl;
-import com.example.demo.Entities.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -10,8 +8,9 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalTime;
 
-import com.example.demo.Repositories.FilmRepository;
-import com.example.demo.Services.FilmService;
+import com.example.demo.entities.*;
+import com.example.demo.repository.FilmRepository;
+import com.example.demo.services.FilmService;
 
 import java.util.Base64;
 import java.util.Date;
