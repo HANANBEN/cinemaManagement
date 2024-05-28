@@ -13,4 +13,5 @@ public interface SeanceService {
     public Long countSeance();
     public void deleteSeanceById(Integer id);
     List<Seance> findByProjectionfilmDateprojection(Date date);
+    List<Seance> findByProjectionfilm(Projectionfilm projfilm);
 }

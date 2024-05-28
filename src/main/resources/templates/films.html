@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AflamCom - Gestion des Films</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles/bareGestionnaire.css">
     <style>
@@ -15,7 +14,7 @@
             font-family: Arial, sans-serif;
         }
         .top-bar {
-            
+            background-color: #343a40;
             color: #fff;
             padding: 10px 20px;
         }
@@ -48,6 +47,17 @@
             background-color: #218838;
             border-color: #1e7e34;
         }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-outline-success {
+            border-color: #28a745;
+            color: #28a745;
+        }
+        .btn-outline-success:hover {
+            background-color: #28a745;
+            color: #fff;
+        }
         .table-responsive {
             background-color: #fff;
             border-radius: 10px;
@@ -74,6 +84,20 @@
         .btn-edit:hover, .btn-delete:hover {
             opacity: 0.8;
         }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-outline-success {
+            border-color: #28a745;
+            color: #28a745;
+        }
+        .btn-outline-success:hover {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .ms-3 {
+            margin-left: 1rem !important;
+        }
     </style>
 </head>
 <body>
@@ -95,50 +119,58 @@
 </div>
 
 <main role="main" class="container-fluid mt-3">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="col">
-                <a th:href="@{/addFilm}" class="btn btn-add-film btn-sm">Ajouter Film</a>
-            </div>
-            <div class="table-responsive mt-3">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Titre</th>
-                            <th>Durée</th>
-                            <th>Réalisateur</th>
-                            <th>Description</th>
-                            <th>Photo</th>
-                            <th>Date de sortie</th>
-                            <th>Catégorie</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="film : ${films}">
-                            <td th:text="${film.idfilm}"></td>
-                            <td th:text="${film.titre}"></td>
-                            <td th:text="${film.duree}"></td>
-                            <td th:text="${film.realisateur}"></td>
-                            <td th:text="${film.description}"></td>
-                            <td>
-                                <img th:if="${film.photo != null}" alt="" th:src="*{'data:image/jpeg;base64,'+{film.photo}}" style="max-width: 100px; max-height: 100px;">
-                            </td>
-                            <td th:text="${film.datesortie}"></td>
-                            <td th:text="${film.categorie.getNom()}"></td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <a th:href="@{/film/edit/{id}(id=${film.idfilm})}" class="btn btn-edit btn-sm mx-1">Modifier</a>
-                                    <a th:href="@{/film/delete/{id}(id=${film.idfilm})}" class="btn btn-delete btn-sm mx-1" >Supprimer</a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+<div class="row justify-content-center mt-3">
+    <div class="col-auto d-flex align-items-center">
+        <a href="/addFilm" class="btn btn-add-film btn-sm me-2">Ajouter Film</a>
+        <form class="d-flex" method="post" action="/films/search">
+            <input class="form-control me-2" type="search" name="query" placeholder="Rechercher un film" aria-label="Rechercher">
+            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+        </form>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+    <div class="col-md-10">
+        <div class="table-responsive mt-3">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titre</th>
+                        <th>Durée</th>
+                        <th>Réalisateur</th>
+                        <th>Description</th>
+                        <th>Photo</th>
+                        <th>Date de sortie</th>
+                        <th>Catégorie</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="film : ${films}">
+                        <td th:text="${film.idfilm}"></td>
+                        <td th:text="${film.titre}"></td>
+                        <td th:text="${film.duree}"></td>
+                        <td th:text="${film.realisateur}"></td>
+                        <td th:text="${film.description}"></td>
+                        <td>
+                            <img th:if="${film.photo != null}" alt="Film Photo" th:src="'data:image/png;base64,' + ${film.photo}" style="max-width: 100px; max-height: 100px;">
+                        </td>
+                        <td th:text="${film.datesortie}"></td>
+                        <td th:text="${film.categorie.getNom()}"></td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a th:href="@{/film/edit/{id}(id=${film.idfilm})}" class="btn btn-edit btn-sm mx-1">Modifier</a>
+                                <a th:href="@{/film/delete/{id}(id=${film.idfilm})}" class="btn btn-delete btn-sm mx-1">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

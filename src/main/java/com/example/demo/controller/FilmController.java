@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -162,7 +163,17 @@ public class FilmController {
 
         return "redirect:/films";
     }
-
+    @PostMapping("/films/search")
+    public String searchGestionnaire(@RequestParam String query, Model model) {
+      
+            Film film= filmser.findByTitle(query);
+           List<Film> films=new ArrayList();
+           films.add(film);
+           
+            model.addAttribute("films", films);
+        return "films"; 
+    }
+ 
     }
     
 

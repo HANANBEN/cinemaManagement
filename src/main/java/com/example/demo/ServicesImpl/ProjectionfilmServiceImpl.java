@@ -7,6 +7,7 @@ import com.example.demo.entities.*;
 import com.example.demo.repository.ProjectionfilmRepository;
 import com.example.demo.services.ProjectionfilmService;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,6 +30,23 @@ public class ProjectionfilmServiceImpl implements ProjectionfilmService {
     public Projectionfilm saveProjectionfilm(Projectionfilm projectionfilm) {
         return projectionfilmrep.save( projectionfilm);
     }
+    
+    @Override
+    public List<Projectionfilm> findByFilmTitre(String titre) {
+        return projectionfilmrep.findByFilmTitre(titre);
+    }
+
+    @Override
+    public List<Projectionfilm> findByDateprojection(Date dateprojection) {
+        return projectionfilmrep.findByDateprojection(dateprojection);
+    }
+
+    @Override
+    public List<Projectionfilm> findByFilmTitreAndDateprojection(String titre, Date dateprojection) {
+        return projectionfilmrep.findByFilmTitreAndDateprojection(titre, dateprojection);
+    }
+    
+    
 
     @Override
     public Projectionfilm getProjectionfilmById(Integer id) {

@@ -21,4 +21,8 @@ public class MainController {
      public String get5(Model model){
           return "contact.html";
 	 }
+	 @GetMapping("/index")
+     public String get6(Model model){
+          return "index.html";
+	 }
 }

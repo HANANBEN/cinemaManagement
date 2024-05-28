@@ -55,4 +55,10 @@ public class SeanceServiceImpl implements SeanceService {
 		// TODO Auto-generated method stub
 		return seancerep.findByProjectionfilmDateprojection(date);
 	}
+
+	@Override
+	public List<Seance> findByProjectionfilm(Projectionfilm projfilm) {
+		
+		return seancerep.findByProjectionfilm(projfilm);
+	}
 }

@@ -11,5 +11,5 @@ import com.example.demo.entities.*;
 @RepositoryRestResource
 public interface SeanceRepository  extends JpaRepository<Seance,Integer> {
     List<Seance> findByProjectionfilmDateprojection(Date date);
-
+    List<Seance> findByProjectionfilm(Projectionfilm projfilm);
 }

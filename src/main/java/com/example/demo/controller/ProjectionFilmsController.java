@@ -180,7 +180,7 @@ public class ProjectionFilmsController {
 		     // Redirect or return a view
 		     return "redirect:/Acceuil";
 		 }
-	 
+	
 	 
 	public ProjectionFilmsController(ProjectionfilmService projectionfilmserv, FilmService filmserv) {
 		super();
@@ -198,7 +198,63 @@ public class ProjectionFilmsController {
 	public ProjectionFilmsController() {
 		super();
 	}
+	
+	@GetMapping("/projection/edit/{id}")
+    public String showEditProjectionForm(@PathVariable Integer id, Model model) {
+        Projectionfilm projection = projectionfilmserv.getProjectionfilmById(id);
+            model.addAttribute("projection", projection);
+            return "editProjection.html"; // Nom du template Thymeleaf pour le formulaire d'édition
+      
+    }
+	@PostMapping("/projection/edit/{id}")
+    public String updateProjection(@PathVariable Integer id,
+                                   @RequestParam("dateprojection") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateprojection,
+                                   @RequestParam("prix") double prix,
+                                   @RequestParam("film") String filmTitle) {
+        Projectionfilm projection = projectionfilmserv.getProjectionfilmById(id);
+       
+            Film film = filmserv.findByTitle(filmTitle);
+            projection.setDateprojection(dateprojection);
+            projection.setPrix(prix);
+            projection.setFilm(film);
+            projectionfilmserv.saveProjectionfilm(projection);
+            return "redirect:/projections";
+      
+    }
+	  @GetMapping("/projection/delete/{id}")
+	    public String deleteProjection(@PathVariable Integer id ) {
+		Projectionfilm profilm=  projectionfilmserv.getProjectionfilmById(id);
+		List<Seance> listSeance= seanceserv.findByProjectionfilm(profilm);
+		for (Seance seance : listSeance) {
+	        // Set salle's availability to true
+	        Salle salle = seance.getSalle();
+	        salle.setIsdispo(true);
+	        salleserv.saveSalle(salle);
 
+	        // Delete the Seance
+	        seanceserv.deleteSeanceById(seance.getIdseance());
+	    }
+	        projectionfilmserv.deleteProjectionfilmById(id);
+	        
+	        return "redirect:/projections";
+	    } 
+	 @PostMapping("/filmProjevction/search")
+	    public String searchProjections(@RequestParam(required = false) String query,
+	                                    @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateprojection,
+	                                    Model model) {
+	        List<Projectionfilm> projections;
+	        if (query != null && !query.isEmpty() && dateprojection != null) {
+	            projections = projectionfilmserv.findByFilmTitreAndDateprojection(query, dateprojection);
+	        } else if (query != null && !query.isEmpty()) {
+	            projections = projectionfilmserv.findByFilmTitre(query);
+	        } else if (dateprojection != null) {
+	            projections = projectionfilmserv.findByDateprojection(dateprojection);
+	        } else {
+	            projections = projectionfilmserv.getAllProjections();
+	        }
+	        model.addAttribute("projections", projections);
+	        return "/projections.html";
+	    }
 	
 	
 }
