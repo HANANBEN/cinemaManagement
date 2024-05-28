@@ -157,7 +157,13 @@ public class Cinema {
 		this.altitude = altitude;
 		this.ville = ville;
 	}
+
+
+	    public Integer getTotalNumberOfRooms() {
+	        return salles != null ? salles.size() : 0;
+	    }
 	
+
 	
     
 }

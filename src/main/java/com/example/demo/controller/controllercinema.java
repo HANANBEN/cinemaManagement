@@ -202,7 +202,7 @@ public class controllercinema {
                                             .collect(Collectors.toList());
         }
         model.addAttribute("c", cs.getCinemaById(Integer.parseInt(idcinema)));
-
+        model.addAttribute("ca", cs.getCinemaById(Integer.parseInt(idcinema)));
         model.addAttribute("gestionnaires", gestionnaires);
         return "cinemaaffectation"; // Vue pour afficher la liste des gestionnaires
     }
@@ -210,6 +210,7 @@ public class controllercinema {
     public String affecterCinema(@PathVariable Integer id,
              Model model) {
     	Cinema c = cs.getCinemaById(id);
+    	
         model.addAttribute("ca", c);
         model.addAttribute("c", c);
         
