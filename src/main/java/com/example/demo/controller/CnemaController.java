@@ -17,7 +17,7 @@ public class CnemaController {
     public CnemaController(CinemaService cs) {
         this.cs = cs;
     }
-
+    
     @GetMapping("/cinema")
     public String listcinemas(Model model) {
         List<Cinema> cinemas = cs.getAllCinemas();
