@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entities.Cinema;
 import com.example.demo.entities.Salle;
+
 import com.example.demo.repository.CinemaRepository;
 import com.example.demo.repository.SalleRepository;
 import com.example.demo.services.CinemaService;
