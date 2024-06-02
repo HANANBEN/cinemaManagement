@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color:#EFEEEE;
+            background-size: cover;
+            background-position: center;
+        }
+        .top-bar {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+        }
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .sidebar {
+            background-color: black;
+            color: white;
+            padding-top: 20px;
+            height: 100%;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .content {
+            padding: 20px;
+        }
+        .logo {
+            position: absolute;
+            top: 0px;
+            left: 35px;
+            width: 60px;
+            height:60px;
+        }
+        .wider-label {
+        width: 150px; /* Adjust the width as needed */
+    }
+        .x {
+            position: absolute;
+            top: 21px;
+            left: 100px;
+            width: 60px;
+            height:60px;
+            color: burlywood;
+        }
+        .h1{margin-left:50px;}
+        #h1{margin-left:50px;}
+        #h2{margin-left:39px;}
+        table {
+            margin-left:50px;
+            width: 100%; /* Set table width */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+        <img src="/image/logo1.png" class="logo" alt="Logo de votre site web">
+        <h5 class="x"><b>AflamCom</b></h5>
+    </div>
+    <div class="d-flex align-items-center">
+        <a href="/" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+        <a href="my_books" class="nav-link"><i class="fas fa-user"></i> Gestion des gestionnaires</a>
+        <a th:href="@{/cinema}" class="nav-link"><i class="fas fa-film"></i> Gestion des cinémas</a>
+    </div>
+    <a href="#" class="logout-link">Logout <i class="bi bi-box-arrow-right"></i></a>
+</div>
+
+<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+    <br>
+
+    <div class="row">
+        <h1 class="h1">Liste des gestionnaires</h1>
+        <div class="row">
+            <div class="col-md-6" id="h1">
+                <form th:action="@{/gestionnaire/search}" method="get" th:object="${c}">
+                    <input type="hidden" name="idcinema" th:value="${c.idcinema}" />
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Rechercher..." name="keyword">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" style="width: 100px;">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br><br>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" rowspan="2">Id gestionnaire</th>
+                        <th scope="col" rowspan="2">Nom</th>
+                        <th scope="col" rowspan="2">Prenom</th>
+                        <th scope="col" rowspan="2">Email</th>
+                        <th scope="col" rowspan="2">Telephone</th>
+                    </tr>
+                    <tr></tr>
+                </thead>
+                <tbody>
+                    <tr th:each="gestionnaire : ${gestionnaires}">
+                        <td th:text="${gestionnaire.idgestionnaire}"></td>
+                        <td th:text="${gestionnaire.nom}"></td>
+                        <td th:text="${gestionnaire.prenom}"></td>
+                        <td th:text="${gestionnaire.email}"></td>
+                        <td th:text="${gestionnaire.tele}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row"  id="h2" >
+                <div class="col-md-6">
+                    <!-- Formulaire avec champs en lecture seule et bouton "Affecter" -->
+                  <form th:action="@{/cinemaaffectation/{id}(id=${ca.idcinema})}" th:object="${ca}" method="post">
+    <div class="row mb-3">
+        <div class="col">
+            <label for="idCinema" class="form-label">ID Cinema</label>
+            <input type="text" class="form-control" id="idcinema" th:value="${ca.idcinema}" readonly>
+        </div>
+        <div class="col">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="nom" th:value="${ca.nom}" readonly>
+        </div>
+        <div class="col">
+            <label for="ville" class="form-label">Ville</label>
+            <input type="text" class="form-control" id="ville" th:value="${ca.ville != null ? ca.ville.nom : 'null'}" readonly>
+        </div>
+        <div class="col">
+            <label for="Idgestionnaire" class="form-label wider-label">Id gestionnaire</label>
+            <input type="text" class="form-control" id="idgestionnaire"  name ="x" >
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Affecter</button>
+        </div>
+    </div>
+</form>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
