@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql1
+    environment:
+      MYSQL_ROOT_PASSWORD: ysfkawtar
+      MYSQL_DATABASE: DBcinema
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - cinema-management-network
+
+  app:
+    image: cinema-management
+    container_name: cinemaManagement 
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/DBcinema
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ysfkawtar
+    networks:
+      - cinema-management-network
+
+volumes:
+  db_data:
+
+networks:
+  cinema-management-network:
+    driver: bridge

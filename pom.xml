@@ -105,5 +105,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>cinemamangement2</finalName>
     </build>
 </project>
